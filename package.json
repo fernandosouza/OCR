@@ -2,10 +2,9 @@
   "name": "vanilla",
   "version": "1.0.0",
   "description": "JavaScript example starter project",
-  "main": "index.html",
+  "main": "./src/index.js",
   "scripts": {
-    "start": "parcel index.html --open",
-    "build": "parcel build index.html"
+    "example": "node ./src/index.js ./src/text.txt"
   },
   "dependencies": {},
   "devDependencies": {

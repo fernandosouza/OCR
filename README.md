@@ -6,7 +6,7 @@ This project was built on Node version 10.16. Therefore, it requires at least th
 
 ## Running the application
 
-Run `node ./src/index.js [filepath]`. However, the project already has a .txt file as an example. Simply you can run `node ./src/index.js  ./src/text.txt` to see the example output.
+Run `node ./src/index.js [filepath]`. However, the project already has a .txt file as an example. You can simply run `node ./src/index.js  ./src/text.txt` or `npm run example` to see the example output.
 
 ## Example
 
