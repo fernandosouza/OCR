@@ -1,11 +1,4 @@
-const testString = `
-    _  _     _  _  _  _  _ 
-  | _| _||_||_ |_   ||_||_|
-  ||_  _|  | _||_|  ||_| _|
-    _  _  _  _  _  _     _ 
-|_||_|| || ||_   |  |  ||_ 
-  | _||_||_||_|  |  |  | _|
-`;
+const fs = require('fs');
 
 const digitDictionary = [
   [" _ ", "| |", "|_|"],
@@ -20,6 +13,9 @@ const digitDictionary = [
   [" _ ", "|_|", " _|"],
 ];
 
+/*
+ * Takes an string and returns an arry with its lines
+ */
 function extractLinesFromString(string) {
   return string.split(/\n/).filter((line) => !!line);
 }
@@ -34,6 +30,9 @@ function findCharacter(character) {
   });
 }
 
+/*
+ * Takes an text line and extracts characters from a character segment.
+ */
 function mountCharacter(lines) {
   const characters = [];
   lines.forEach((line) => {
@@ -47,32 +46,38 @@ function mountCharacter(lines) {
   return characters;
 }
 
-function groupLinesOfCharacters(lines) {
+/*
+ * Takes a string and extract lines which contain characters.
+ * Each line is represented as an array.
+ * [[line1], [line2]]
+ * Each line has an array which each item of it represents an character segment.
+ * [characterSegment,characterSegment, characterSegment]
+ */
+function findLinesOfCharacters(string) {
   const linesToFormAnCharacter = 3;
   let currentCharacterIndex = 0;
 
-  return lines.reduce((result, currentValue) => {
-    if (
-      result[currentCharacterIndex] &&
-      result[currentCharacterIndex].length === linesToFormAnCharacter
-    ) {
-      currentCharacterIndex++;
-    }
+  return extractLinesFromString(string).reduce((result, currentValue) => {
     (result[currentCharacterIndex] = result[currentCharacterIndex] || []).push(
       currentValue
     );
+    if (result[currentCharacterIndex].length === linesToFormAnCharacter) {
+      currentCharacterIndex++;
+    }
     return result;
   }, []);
 }
 
 function OCR(string) {
-  return groupLinesOfCharacters(extractLinesFromString(string))
+  return findLinesOfCharacters(string)
     .map((readableLine) => {
       return mountCharacter(readableLine)
-        .map((a) => findCharacter(a))
+        .map((character) => findCharacter(character))
         .join("");
     })
     .join("\n");
 }
 
-console.log(OCR(testString));
+fs.readFile(process.argv[2], 'utf8', (err, data) => {
+  console.log(OCR(data));
+});
