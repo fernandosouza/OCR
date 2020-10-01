@@ -6,7 +6,9 @@ This project was built on Node version 10.16. Therefore, it requires at least th
 
 ## Running the application
 
-Run `node ./src/index.js [filepath]`. However, the project already has a .txt file as an example. You can simply run `node ./src/index.js  ./src/text.txt` or `npm run example` to see the example output.
+1 - Run `npm install` in your terminal to install all the dependencies.
+
+2 - Run `node ./src/cli.js [filepath]`. However, the project already has a .txt file as an example. You can simply run `npm run example` or `node ./src/cli.js  ./src/text.txt` to see the example output.
 
 ## Example
 

@@ -4,12 +4,15 @@
   "description": "JavaScript example starter project",
   "main": "./src/index.js",
   "scripts": {
-    "example": "node ./src/index.js ./src/text.txt"
+    "example": "./src/cli.js ./src/text.txt"
   },
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "7.2.0",
     "parcel-bundler": "^1.6.1"
+  },
+  "bin": {
+    "ocr": "./src/cli.js"
   },
   "keywords": [
     "javascript",
