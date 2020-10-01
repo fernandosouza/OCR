@@ -10,6 +10,10 @@ This project was built on Node version 10.16. Therefore, it requires at least th
 
 2 - Run `node ./src/cli.js [filepath]`. However, the project already has a .txt file as an example. You can simply run `npm run example` or `node ./src/cli.js  ./src/text.txt` to see the example output.
 
+## Unity Tests
+
+Run `npm run test` in the terminal to run the tests.
+
 ## Example
 
 Giving the following file content:
